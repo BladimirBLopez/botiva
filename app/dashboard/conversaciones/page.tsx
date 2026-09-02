@@ -22,33 +22,39 @@ export default async function ConversacionesPage() {
   };
 
   const statusColor: Record<string, string> = {
-    waiting: 'bg-yellow-100 text-yellow-800',
-    attending: 'bg-blue-100 text-blue-800',
-    finished: 'bg-green-100 text-green-800',
+    waiting: 'bg-amber-50 text-amber-700',
+    attending: 'bg-botiva-blue-soft text-botiva-blue',
+    finished: 'bg-emerald-50 text-emerald-700',
   };
 
   return (
-    <div className="p-8">
-      <h1 className="text-2xl font-bold mb-6">Conversaciones</h1>
+    <div className="p-8 max-w-3xl">
+      <h1 className="text-xl font-semibold text-botiva-ink mb-6">
+        Conversaciones
+      </h1>
 
       {conversations.length === 0 ? (
-        <p className="text-gray-500">No hay conversaciones todavía.</p>
+        <p className="text-sm text-gray-500">
+          Todavía no hay conversaciones.
+        </p>
       ) : (
-        <div className="bg-white rounded-lg shadow divide-y">
+        <div className="bg-white rounded-lg border border-gray-200 divide-y divide-gray-100">
           {conversations.map((conv) => (
             <Link
               key={conv.id}
               href={`/dashboard/conversaciones/${conv.id}`}
-              className="flex items-center justify-between p-4 hover:bg-gray-50"
+              className="flex items-center justify-between px-5 py-4 hover:bg-botiva-bg transition-colors"
             >
               <div>
-                <p className="font-medium">
+                <p className="text-sm font-medium text-botiva-ink">
                   {conv.contact.name || conv.contact.phone}
                 </p>
-                <p className="text-sm text-gray-500">{conv.contact.phone}</p>
+                <p className="text-xs text-gray-500 mt-0.5">
+                  {conv.contact.phone}
+                </p>
               </div>
               <span
-                className={`text-xs px-2 py-1 rounded-full ${
+                className={`text-xs font-medium px-2.5 py-1 rounded-full ${
                   statusColor[conv.status]
                 }`}
               >
