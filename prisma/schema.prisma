@@ -10,11 +10,14 @@ datasource db {
 }
 
 model Organization {
-  id        String   @id @default(cuid())
-  name      String
-  slug      String   @unique
-  plan      String   @default("trial")
-  createdAt DateTime @default(now())
+  id            String   @id @default(cuid())
+  name          String
+  slug          String   @unique
+  plan          String   @default("trial")
+  phoneNumberId String?
+  wabaId        String?
+  accessToken   String?
+  createdAt     DateTime @default(now())
 
   users     User[]
   contacts  Contact[]
